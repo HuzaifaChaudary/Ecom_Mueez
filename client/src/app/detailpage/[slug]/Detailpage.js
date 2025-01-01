@@ -31,6 +31,7 @@ const Product = ({ params }) => {
         console.error('Error fetching product details:', error);
       }
     };
+    
 
     
 
