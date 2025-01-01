@@ -34,6 +34,8 @@ const Home = () => {
         setProducts(bags);
         setGlasses(glasses);
         setWatches(watches);
+
+      console.log(glasses);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -41,6 +43,8 @@ const Home = () => {
     };
 
     fetchData();
+    
+
   }, []);
 
 

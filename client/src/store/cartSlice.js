@@ -1,28 +1,33 @@
 // store/cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-// Function to save the cart state to localStorage
+// Function to save the cart state to localStorage (only on the client side)
 const saveStateToLocalStorage = (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem('cartState', serializedState);
-  } catch (e) {
-    console.error("Could not save state", e);
+  if (typeof window !== 'undefined') {  // Ensure we are on the client side
+    try {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem('cartState', serializedState);
+    } catch (e) {
+      console.error("Could not save state", e);
+    }
   }
 };
 
-// Function to load the cart state from localStorage
+// Function to load the cart state from localStorage (only on the client side)
 const loadStateFromLocalStorage = () => {
-  try {
-    const serializedState = localStorage.getItem('cartState');
-    if (serializedState === null) {
+  if (typeof window !== 'undefined') {  // Ensure we are on the client side
+    try {
+      const serializedState = localStorage.getItem('cartState');
+      if (serializedState === null) {
+        return undefined;
+      }
+      return JSON.parse(serializedState);
+    } catch (e) {
+      console.error("Could not load state", e);
       return undefined;
     }
-    return JSON.parse(serializedState);
-  } catch (e) {
-    console.error("Could not load state", e);
-    return undefined;
   }
+  return undefined; // Return undefined if on the server side
 };
 
 const initialState = loadStateFromLocalStorage() || {

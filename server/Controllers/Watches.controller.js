@@ -1,4 +1,4 @@
-const Watch = require('../Models/Watches.modal');
+const Watch = require('../Modals/Watches.modal');
 
 const WatchesPost = async (req, res) => {
   try {

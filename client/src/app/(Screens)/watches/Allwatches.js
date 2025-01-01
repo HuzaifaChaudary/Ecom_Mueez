@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import AnLuxuriesLoader from '@/components/Loader/Anloader';
-import ScrollToTop from '@/components/Scrolltotop/ScrollToTop';
+import ScrollToTop from '@/components/ScrollTotop/ScrollTotop';
 
 
 const Allwatches = () => {

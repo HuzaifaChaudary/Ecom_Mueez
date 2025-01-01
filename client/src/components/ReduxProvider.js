@@ -5,10 +5,6 @@ import { Provider } from 'react-redux';
 import store from '../store/store';
 
 const ReduxProvider = ({ children }) => {
-//   if (typeof window === 'undefined') {
-//     return null;
-//   }
-
   return <Provider store={store}>{children}</Provider>;
 };
 

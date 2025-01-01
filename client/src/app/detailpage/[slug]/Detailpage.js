@@ -8,7 +8,7 @@ import CartModal from '@/components/CartModal/CartModal';
 import { FaTruckFast } from "react-icons/fa6";
 import { FaShieldAlt } from "react-icons/fa";
 import Anloader from '@/components/Loader/Anloader';
-import ScrollToTop from '@/components/Scrolltotop/ScrollToTop';
+import ScrollToTop from '@/components/ScrollTotop/ScrollTotop';
 
 const Product = ({ params }) => {
   const dispatch = useDispatch();
@@ -31,6 +31,8 @@ const Product = ({ params }) => {
         console.error('Error fetching product details:', error);
       }
     };
+
+    
 
     fetchProductDetails();
   }, [params.slug]);

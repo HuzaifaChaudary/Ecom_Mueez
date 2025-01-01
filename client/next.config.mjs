@@ -19,7 +19,9 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'api.anluxuries.com',
       },
+      
     ],
+    domains: ['localhost'],
   },
 };
 
