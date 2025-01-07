@@ -4,7 +4,7 @@ const Detailcards = ({ product }) => {
   return (
     <div className="detail-card border p-4 m-2 rounded shadow-md">
       <img
-        src={`http://localhost:3000/${product.mainImage}`} 
+        src={`${process.env.NEXT_PUBLIC_API_URL}/${product.mainImage}`} 
         alt={product.name}
         className="w-full h-40 object-cover rounded"
         style={{width:250, height:250}}

@@ -21,7 +21,7 @@ const nextConfig = {
       },
       
     ],
-    domains: ['localhost'],
+    domains: ['localhost', 'anluxuries.com'],
   },
 };
 
