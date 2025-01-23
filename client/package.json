@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -27,7 +30,7 @@
     "lucide-react": "^0.424.0",
     "mongoose": "^8.5.1",
     "multer": "^1.4.5-lts.1",
-    "next": "14.2.5",
+    "next": "^14.2.23",
     "react": "^18",
     "react-confetti": "^6.1.0",
     "react-dnd": "^16.0.1",
@@ -37,6 +40,7 @@
     "react-icons": "^5.2.1",
     "react-loader-spinner": "^6.1.6",
     "react-redux": "^9.1.2",
+    "redux": "^5.0.1",
     "sharp": "^0.33.4",
     "streamifier": "^0.1.1",
     "tailwind-merge": "^2.4.0",
@@ -47,5 +51,9 @@
     "daisyui": "^4.12.10",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
+  },
+  "exports": {
+    "import": "./dist/redux-toolkit.esm.mjs",
+    "require": "./dist/index.js"
   }
 }

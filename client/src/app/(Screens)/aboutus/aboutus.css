@@ -1,0 +1,95 @@
+.about-us {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.about-us-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-us-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.about-us-header p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.categories {
+    margin: 20px 0;
+}
+
+.categories h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    font-size: 1.5rem;
+    color: #444;
+}
+
+.category p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.contact-us {
+    margin-top: 30px;
+}
+
+.contact-us h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-us ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-us ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.contact-us ul li a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.contact-us ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-us-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .categories h2,
+    .contact-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .category h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-us-header p,
+    .category p,
+    .contact-us ul li {
+        font-size: 0.9rem;
+    }
+}

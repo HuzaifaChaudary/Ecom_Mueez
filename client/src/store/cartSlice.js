@@ -43,12 +43,15 @@ const cartSlice = createSlice({
       const item = action.payload;
       const existingItem = state.items.find(i => i._id === item._id);
       if (existingItem) {
-        existingItem.quantity += 1;
-        existingItem.totalPrice += item.newPrice;
+        existingItem.quantity += item.quantity;  // Update quantity based on the input quantity
+        existingItem.totalPrice = existingItem.quantity * existingItem.newPrice;  // Update totalPrice based on quantity
       } else {
-        state.items.push({ ...item, quantity: 1, totalPrice: item.newPrice });
+        state.items.push({ ...item, quantity: item.quantity, totalPrice: item.quantity * item.newPrice });
       }
-      state.totalAmount += item.newPrice;
+      
+      // Update totalAmount based on the new totalPrice of all items in the cart
+      state.totalAmount = state.items.reduce((total, item) => total + item.totalPrice, 0);
+      
       saveStateToLocalStorage(state);  // Save state after modification
     },
     removeItemFromCart: (state, action) => {

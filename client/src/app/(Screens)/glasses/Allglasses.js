@@ -29,7 +29,7 @@ const Allglasses = () => {
   }, []);
 
   const navigateHandler = (id) => {
-    router.push(`/detailpage/${id}`);
+    router.push(`/detailpage/glasses/${id}`);
   };
 
   if (loading) {

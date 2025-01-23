@@ -29,7 +29,7 @@ const Allbags = () => {
   }, []);
 
   const navigateHandler = (id) => {
-    router.push(`/detailpage/${id}`);
+    router.push(`/detailpage/bag/${id}`);
   };
 
   if (loading) {

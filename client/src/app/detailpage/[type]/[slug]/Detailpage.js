@@ -1,4 +1,3 @@
-// pages/product/[slug].js
 'use client'
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -15,6 +14,7 @@ const Product = ({ params }) => {
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.items);
   const [, setAddedToCart] = useState(false);
@@ -22,7 +22,17 @@ const Product = ({ params }) => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/getglassesonid/${params.slug}`);
+        let response;
+
+
+
+        // Check the path parameter and adjust the API endpoint accordingly
+        if (params.type.includes('bag')) {
+          response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/getbagsonid/${params.slug}`);
+        } else if (params.type.includes('glasses')) {
+          response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/getglassesonid/${params.slug}`);
+        }
+
         const data = await response.json();
         setProduct(data);
         setImages([data.mainImage, ...data.additionalImages]);
@@ -30,12 +40,9 @@ const Product = ({ params }) => {
       } catch (error) {
         console.error('Error fetching product details:', error);
       }
-      //.
     };
 
-
-    
-
+    console.log(params.slug, "uraaaaaa")
     fetchProductDetails();
   }, [params.slug]);
 
@@ -47,10 +54,13 @@ const Product = ({ params }) => {
   }, [cartItems, product]);
 
   const handleAddToCart = (product) => {
-    dispatch(addItemToCart(product));
+    const totalPrice = product.newPrice * quantity;  // Calculate the total price based on quantity
+    const productWithQuantity = { ...product, quantity, totalPrice };
+    dispatch(addItemToCart(productWithQuantity));
     setAddedToCart(true);
     setIsCartModalOpen(true);
   };
+  
 
   const closeCartModal = () => {
     setIsCartModalOpen(false);
@@ -99,40 +109,52 @@ const Product = ({ params }) => {
             </div>
            
             <ul className="list-disc list-inside text-gray-600 mb-4">
-
-                <div className='flex items-center gap-3'>
+              <div className='flex items-center gap-3'>
                 <FaTruckFast />
                 <p>FREE delivery over Rs. 3499!</p>
-                </div>
-                <div className='md:ml-5 text-xs text-gray-400 p-3'>
-                  <p>Rs.200 delivery charges nationwide.</p>
-                  <p>Delivery within 2-5 days.</p>
-                </div>
-
-
-
-                <div className='flex items-center gap-3'>
+              </div>
+              <div className='md:ml-5 text-xs text-gray-400 p-3'>
+                <p>Rs.200 delivery charges nationwide.</p>
+                <p>Delivery within 2-5 days.</p>
+              </div>
+              <div className='flex items-center gap-3'>
                 <FaShieldAlt />
                 <p>FREE returns and exchanges!</p>
-                </div>
-                <div className='md:ml-5 text-sm text-gray-400 p-3'>
-                  <p><span className='text-gray-500 font-bold'>100%</span> <span className='text-xs'>customer satisfaction guaranteed.</span></p>
-                  <p><span className='text-gray-500 font-bold'>FREE LIFETIME</span> <span className='text-xs'>returns and exchanges.</span></p>
-                </div>
+              </div>
+              <div className='md:ml-5 text-sm text-gray-400 p-3'>
+                <p><span className='text-gray-500 font-bold'>100%</span> <span className='text-xs'>customer satisfaction guaranteed.</span></p>
+                <p><span className='text-gray-500 font-bold'>FREE LIFETIME</span> <span className='text-xs'>returns and exchanges.</span></p>
+              </div>
             </ul>
+
+            {/* Quantity Selector */}
+            <div className="mb-4">
+              <label htmlFor="quantity" className="block text-gray-700 font-medium mb-2">
+                Quantity
+              </label>
+              <input
+                type="number"
+                id="quantity"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                className="w-20 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+              />
+            </div>
+
             <div className='mx-auto flex'>
-            <button
-              className="w-full  bg-gray-700 text-white px-6 py-2 rounded-md shadow-md hover:bg-gray-900 transition-colors duration-300"
-              onClick={() => handleAddToCart(product)}
-            >
-              Buy Now
-            </button>
+              <button
+                className="w-full bg-gray-700 text-white px-6 py-2 rounded-md shadow-md hover:bg-gray-900 transition-colors duration-300"
+                onClick={() => handleAddToCart(product
+                )}>
+                  Buy Now
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        {isCartModalOpen && <CartModal isOpen={isCartModalOpen} closeModal={closeCartModal} />}
       </div>
-      {isCartModalOpen && <CartModal isOpen={isCartModalOpen} closeModal={closeCartModal} />}
-    </div>
   );
 };
 

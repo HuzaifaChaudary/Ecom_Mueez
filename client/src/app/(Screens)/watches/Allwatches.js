@@ -29,7 +29,7 @@ const Allwatches = () => {
   }, []);
 
   const navigateHandler = (id) => {
-    router.push(`/detailpage/${id}`);
+    router.push(`/detailpage/watch/${id}`);
   };
 
   if (loading) {

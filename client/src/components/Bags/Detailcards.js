@@ -3,6 +3,7 @@ import React from 'react';
 const Detailcards = ({ product }) => {
   return (
     <div className="detail-card border p-4 m-2 rounded shadow-md">
+
       <img
         src={`${process.env.NEXT_PUBLIC_API_URL}/${product.mainImage}`} 
         alt={product.name}

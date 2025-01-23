@@ -1,4 +1,4 @@
-const Bags = require('../Modals/Bags.modal'); 
+const Bags = require('../Modals/Bags.modal');
 
 const Bagspost = async (req, res) => {
   try {
@@ -40,4 +40,17 @@ const getAllBags = async (req, res) => {
   }
 };
 
-module.exports = { Bagspost, getAllBags };
+const getBagById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const bag = await Bags.findById(id);
+    if (!bag) {
+      return res.status(404).json({ message: 'Bag not found' });
+    }
+    res.status(200).json(bag);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch bag by ID', error });
+  }
+};
+
+module.exports = { Bagspost, getAllBags, getBagById };
