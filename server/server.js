@@ -9,7 +9,7 @@ const watches = require('./Routes/Watches.routes');
 const auth = require('./Routes/auth.routes');
 const orders = require('./Routes/Order.routes');
 const compression = require('compression');
-const stripe = require('stripe')('sk_test_51PmBjzCJ5MpaKpVPzVQlIOfY54Aaj621PAvcFQf7lfdNLTrgHj1V3aQTYf1dv5xfCMu9MTRSuUVAWteirfjCD28e00mKPl5Hlu'); // Import Stripe
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Import Stripe
 const Bags = require('./Modals/Bags.modal')
 
 dotenv.config();

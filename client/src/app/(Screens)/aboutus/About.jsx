@@ -1,6 +1,6 @@
 "use client"; // This makes the component a client component
 import React, { useState } from "react";
-import "./AboutUs.css";
+import "./aboutus.css";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footersection";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
