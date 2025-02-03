@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import { Button } from 'flowbite-react';
 
-const Herosection = () => {
+const Herosection = ({ onShopNowClick }) => {
   return (
     <div className="font-[Poppins] min-h-screen bg-white flex flex-col">
       <header className="bg-white">
@@ -12,30 +13,40 @@ const Herosection = () => {
           <div>
             <Image className="w-16 cursor-pointer" src="/assets/Images/GFV.png" alt="Logo" width={64} height={64} />
           </div>
-          <div className="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
-
-<ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-  <li>
-    <Link href="/" className="hover:text-gray-500">
-      Home
-    </Link>
-  </li>
-  <li>
-    <Link href="/aboutus" className="hover:text-gray-500">
-      About Us
-    </Link>
-  </li>
-  <li>
-    <Link href="/contact" className="hover:text-gray-500">
-      Contact
-    </Link>
-  </li>
-</ul>
-
+          <div className="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 shadow-md md:shadow-none">
+            <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+              <li>
+                <Link href="/" className="hover:text-gray-500">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/aboutus" className="hover:text-gray-500">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-gray-500">
+                  Contact
+                </Link>
+              </li>
+              {/* Shop Now Button for Mobile */}
+              <li className="md:hidden">
+                <button
+                  className="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+                  onClick={onShopNowClick}
+                >
+                  Shop Now
+                </button>
+              </li>
+            </ul>
           </div>
           <div className="flex items-center gap-6">
-            <button className="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-              Sign in
+            <button
+              className="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition duration-300 md:block hidden"
+              onClick={onShopNowClick}
+            >
+              Shop Now
             </button>
             <FontAwesomeIcon
               icon={faBars}
@@ -51,11 +62,17 @@ const Herosection = () => {
           {/* Text Content */}
           <div className="lg:w-1/2 w-full text-center lg:text-left">
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl leading-tight">
-            Elevate Your Style with Anluxuries’ Exquisite Bags, Watches, and Sunglasses
+              Elevate Your Style with Anluxuries’ Exquisite Bags, Watches, and Sunglasses
             </h1>
             <p className="mt-4 text-gray-600 text-lg sm:text-xl">
-            Shop with us and embrace the essence of luxury.            </p>
-            
+              Shop with us and embrace the essence of luxury.
+            </p>
+            <button
+              className="mt-6 bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300"
+              onClick={onShopNowClick}
+            >
+              Shop Now
+            </button>
           </div>
 
           {/* Image Content */}
@@ -74,10 +91,10 @@ const Herosection = () => {
     </div>
   );
 };
-
 const onToggleMenu = () => {
   const navLinks = document.querySelector('.nav-links');
   navLinks.classList.toggle('top-[9%]');
+  navLinks.classList.toggle('shadow-lg'); // Add shadow when menu is open
 };
 
 export default Herosection;
