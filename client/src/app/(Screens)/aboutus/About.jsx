@@ -26,26 +26,26 @@ const AboutUs = () => {
       <div>
         <Image
           className="w-16 cursor-pointer"
-          src="/assets/Images/GFV.png"
+          src="/assets/Images/an_logo.jpg"
           alt="Logo"
           width={64}
           height={64}
         />
       </div>
-      <div className="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
+      <div className="nav-links justify-center duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
 
 <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-  <li>
+  <li className="flex justify-center">
     <Link href="/" className="hover:text-gray-500">
       Home
     </Link>
   </li>
-  <li>
+  <li className="flex justify-center">
     <Link href="/aboutus" className="hover:text-gray-500">
       About Us
     </Link>
   </li>
-  <li>
+  <li className="flex justify-center">
     <Link href="/contact" className="hover:text-gray-500">
       Contact
     </Link>
