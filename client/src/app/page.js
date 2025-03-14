@@ -79,7 +79,7 @@ const Home = () => {
                   Crossbody Bags
                 </h2>
                 <div className="flex flex-wrap justify-center mt-6 gap-6">
-                  {products.slice(-4).map((product, index) => (
+                  {products.slice(-3).map((product, index) => (
                     <Detailcards key={index} product={product} />
                   ))}
                 </div>
@@ -101,7 +101,7 @@ const Home = () => {
                     Glasses
                   </h2>
                   <div className="flex flex-wrap justify-center mt-6 gap-6">
-                    {glasses.slice(-4).map((product, index) => (
+                    {glasses.slice(-3).map((product, index) => (
                       <Detailcards key={index} product={product} />
                     ))}
                   </div>
@@ -123,7 +123,7 @@ const Home = () => {
                   Watches
                 </h2>
                 <div className="flex flex-wrap justify-center mt-6 gap-6">
-                  {watches.slice(-4).map((product, index) => (
+                  {watches.slice(-3).map((product, index) => (
                     <Detailcards key={index} product={product} />
                   ))}
                 </div>
